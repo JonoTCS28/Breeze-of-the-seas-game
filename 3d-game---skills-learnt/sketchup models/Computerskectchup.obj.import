@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkqctonk63upt"
+path="res://.godot/imported/Computerskectchup.obj-3d47d86bf74448f882a1783a113e542f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Computerskectchup.obj-3d47d86bf74448f882a1783a113e542f.mesh"]
+
+source_file="res://sketchup models/Computerskectchup.obj"
+dest_files=["res://.godot/imported/Computerskectchup.obj-3d47d86bf74448f882a1783a113e542f.mesh", "res://.godot/imported/Computerskectchup.obj-3d47d86bf74448f882a1783a113e542f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

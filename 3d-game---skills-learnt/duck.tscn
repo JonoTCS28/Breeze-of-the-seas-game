@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://edxfsqa2087c"]
+
+[ext_resource type="Script" path="res://duck.gd" id="1_huuyu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nbl8y"]
+radius = 0.552107
+height = 2.01102
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f2tj1"]
+radius = 0.524902
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqnhl"]
+albedo_color = Color(1, 0.784314, 0.196078, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s4xv0"]
+material = SubResource("StandardMaterial3D_fqnhl")
+radius = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ga4up"]
+albedo_color = Color(1, 0.784314, 0.196078, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1f5to"]
+material = SubResource("StandardMaterial3D_ga4up")
+radius = 0.15
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8ohl"]
+albedo_color = Color(1, 0.894118, 0.215686, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_noell"]
+material = SubResource("StandardMaterial3D_h8ohl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8xw4"]
+albedo_color = Color(1, 0.54902, 0.196078, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l0oi8"]
+material = SubResource("StandardMaterial3D_k8xw4")
+radius = 0.15
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rhxcq"]
+albedo_color = Color(1, 0.745098, 0.196078, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4k6w4"]
+material = SubResource("StandardMaterial3D_rhxcq")
+radius = 0.1
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qxqnx"]
+radius = 0.632635
+
+[node name="Duck" type="RigidBody3D" groups=["Duck", "enemy"]]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_huuyu")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.12053, -0.0428455)
+shape = SubResource("CapsuleShape3D_nbl8y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.000433445, 1.82131, 0.513443)
+shape = SubResource("SphereShape3D_f2tj1")
+
+[node name="Duck_body" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Duck_body"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.13502, 0)
+mesh = SubResource("CapsuleMesh_s4xv0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Duck_body"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 1.1389, -0.977157)
+mesh = SubResource("CapsuleMesh_1f5to")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Duck_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.81767, 0.521235)
+mesh = SubResource("SphereMesh_noell")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Duck_body/MeshInstance3D3"]
+transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, 0, -0.0859616, 0.568726)
+mesh = SubResource("CapsuleMesh_l0oi8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Duck_body/MeshInstance3D3/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.335074, -0.566239, -0.466598)
+mesh = SubResource("CapsuleMesh_4k6w4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Duck_body/MeshInstance3D3/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.326358, -0.566239, -0.466598)
+mesh = SubResource("CapsuleMesh_4k6w4")
+
+[node name="Area3D" type="Area3D" parent="." groups=["Duck"]]
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01885e-07, 1.82039, 0.510455)
+shape = SubResource("SphereShape3D_qxqnx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

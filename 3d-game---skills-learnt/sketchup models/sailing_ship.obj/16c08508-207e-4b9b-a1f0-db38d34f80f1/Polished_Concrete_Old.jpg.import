@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bn8p3tv3b0amb"
+path="res://.godot/imported/Polished_Concrete_Old.jpg-8805f2926758d111188dd66443089362.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://sketchup models/sailing_ship.obj/16c08508-207e-4b9b-a1f0-db38d34f80f1/Polished_Concrete_Old.jpg"
+dest_files=["res://.godot/imported/Polished_Concrete_Old.jpg-8805f2926758d111188dd66443089362.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

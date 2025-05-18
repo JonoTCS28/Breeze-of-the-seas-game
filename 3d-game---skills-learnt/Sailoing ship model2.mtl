@@ -1,0 +1,44 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Wood_Floor_Dark
+Ka 0.000000 0.000000 0.000000
+Kd 0.600000 0.368627 0.164706
+Ks 0.330000 0.330000 0.330000
+map_Kd 16c08508-207e-4b9b-a1f0-db38d34f80f1/Wood_Floor_Dark.jpg
+
+newmtl BackColor
+Ka 0.000000 0.000000 0.000000
+Kd 0.643137 0.698039 0.733333
+Ks 0.330000 0.330000 0.330000
+
+newmtl Cladding_Siding_Tan
+Ka 0.000000 0.000000 0.000000
+Kd 0.635294 0.494118 0.372549
+Ks 0.330000 0.330000 0.330000
+map_Kd 16c08508-207e-4b9b-a1f0-db38d34f80f1/Cladding_Siding_Tan.jpg
+
+newmtl Modern_Siding
+Ka 0.000000 0.000000 0.000000
+Kd 0.749020 0.517647 0.392157
+Ks 0.330000 0.330000 0.330000
+map_Kd 16c08508-207e-4b9b-a1f0-db38d34f80f1/Modern_Siding.jpg
+
+newmtl Wood_Veneer_01
+Ka 0.000000 0.000000 0.000000
+Kd 0.470588 0.274510 0.145098
+Ks 0.330000 0.330000 0.330000
+map_Kd 16c08508-207e-4b9b-a1f0-db38d34f80f1/Wood_Veneer_01.jpg
+
+newmtl Polished_Concrete_Old
+Ka 0.000000 0.000000 0.000000
+Kd 0.898039 0.898039 0.898039
+Ks 0.330000 0.330000 0.330000
+map_Kd 16c08508-207e-4b9b-a1f0-db38d34f80f1/Polished_Concrete_Old.jpg
+
+newmtl ForegroundColor
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.330000 0.330000 0.330000
+

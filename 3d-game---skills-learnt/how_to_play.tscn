@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://cer7dj4r5u4ch"]
+
+[ext_resource type="Texture2D" uid="uid://ryat6wqbiumy" path="res://Screenshot 2025-03-18 185112.png" id="1_71lkk"]
+[ext_resource type="Script" path="res://return.gd" id="2_b5a1c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s21xf"]
+font_size = 125
+font_color = Color(0.731634, 0.528985, 0.358434, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tctsj"]
+font_size = 37
+font_color = Color(1, 0.0790012, 0.267146, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nygrr"]
+font_size = 37
+font_color = Color(0.843137, 0.952941, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aavmt"]
+font_size = 37
+font_color = Color(0, 1, 0.156863, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 1.848
+anchor_bottom = 1.79
+offset_right = 17.104
+offset_bottom = 19.08
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1190.38, 608.75)
+scale = Vector2(5.836, 4.82874)
+texture = ExtResource("1_71lkk")
+
+[node name="return" type="Button" parent="."]
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 114.0
+text = "return to game"
+script = ExtResource("2_b5a1c")
+
+[node name="name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 615.0
+offset_top = 5.0
+offset_right = 1353.0
+offset_bottom = 176.0
+text = "How to play"
+label_settings = SubResource("LabelSettings_s21xf")
+
+[node name="moving" type="Label" parent="."]
+layout_mode = 2
+offset_left = 104.0
+offset_top = 168.0
+offset_right = 1841.0
+offset_bottom = 363.0
+text = "Moving - use keys W and S to move back and forward and A and D to rotate left and right. Pressing shift will cause you to sprint going double speed and the Spacebar will make you Jump."
+label_settings = SubResource("LabelSettings_tctsj")
+autowrap_mode = 2
+
+[node name="attacking" type="Label" parent="."]
+layout_mode = 2
+offset_left = 110.0
+offset_top = 277.0
+offset_right = 1847.0
+offset_bottom = 604.0
+text = "Attacking - left-clicking the mouse button will shoot an arrow. Rotating with A and D as well as scrolling can aim where you shoot the arrow. The amount of arrows you have and the amount you can fire (loaded) is seen in the top left-hand corner. Hitting the shapes and ducks will kill them and increase your score and money."
+label_settings = SubResource("LabelSettings_nygrr")
+autowrap_mode = 2
+
+[node name="marketplace" type="Label" parent="."]
+layout_mode = 2
+offset_left = 108.0
+offset_top = 509.0
+offset_right = 1845.0
+offset_bottom = 770.0
+text = "Marketplace - by clicking the marketplace button you can access the marketplace. This is where you can max out your stats to no limit. You will see your attributes increase in the top left-hand corner. Also, you can spawn harder and better - earning shapes by buying the upgrades."
+label_settings = SubResource("LabelSettings_aavmt")
+autowrap_mode = 2
+
+[connection signal="pressed" from="return" to="return" method="_on_pressed"]

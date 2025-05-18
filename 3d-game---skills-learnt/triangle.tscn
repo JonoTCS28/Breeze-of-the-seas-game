@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://mmslr8bnh54i"]
+
+[ext_resource type="Script" path="res://triangle.gd" id="1_l4mf4"]
+[ext_resource type="Texture2D" uid="uid://bhninwe316d06" path="res://Screenshot 2025-03-03 094545.png" id="1_pu7k1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llc1q"]
+albedo_texture = ExtResource("1_pu7k1")
+
+[sub_resource type="PrismMesh" id="PrismMesh_n4rq5"]
+material = SubResource("StandardMaterial3D_llc1q")
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_juhwe"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lyvdo"]
+size = Vector3(1.6, 1.6, 1.6)
+
+[node name="triangle" type="RigidBody3D" groups=["Terrain", "enemy"]]
+script = ExtResource("1_l4mf4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_n4rq5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_juhwe")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_lyvdo")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

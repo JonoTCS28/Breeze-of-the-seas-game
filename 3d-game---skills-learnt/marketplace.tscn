@@ -1,0 +1,311 @@
+[gd_scene load_steps=25 format=3 uid="uid://80xpexiu6b60"]
+
+[ext_resource type="Texture2D" uid="uid://ryat6wqbiumy" path="res://Screenshot 2025-03-18 185112.png" id="1_6yy72"]
+[ext_resource type="Script" path="res://return_scene.gd" id="2_84qdk"]
+[ext_resource type="Script" path="res://damage_label.gd" id="3_fwj3s"]
+[ext_resource type="Script" path="res://triangle_spawner.gd" id="3_ix4vo"]
+[ext_resource type="Script" path="res://circle_spawner.gd" id="4_ese33"]
+[ext_resource type="Script" path="res://speed_label.gd" id="4_y6ns5"]
+[ext_resource type="Script" path="res://money.gd" id="5_4fhpq"]
+[ext_resource type="Script" path="res://duck_spawner.gd" id="5_a2s3m"]
+[ext_resource type="Script" path="res://jump_label.gd" id="5_he3bp"]
+[ext_resource type="Script" path="res://max_damage_label.gd" id="7_rch2d"]
+[ext_resource type="Script" path="res://armour_label.gd" id="8_4svqu"]
+[ext_resource type="Script" path="res://health.gd" id="9_tjpfe"]
+[ext_resource type="Script" path="res://label.gd" id="10_uypai"]
+[ext_resource type="Script" path="res://all_spawner.gd" id="11_teppm"]
+
+[sub_resource type="GDScript" id="GDScript_r11w8"]
+script/source = "extends Node2D
+
+
+func _process(delta: float) -> void:
+	
+	if Gamerule.can_fly == true:
+		$\"shopping_button/passive attributes/Flying_mode\".queue_free()
+	if Gamerule.terrain_created > 499:
+		$shopping_button/summoning/Triangle_spawner.queue_free()
+	if Gamerule.terrain_created > 999:
+		$shopping_button/summoning/Circle_spawner.queue_free()
+	if Gamerule.terrain_created > 1499:
+		$shopping_button/summoning/Duck_spawner.queue_free()
+	if Gamerule.terrain_created > 1999:
+		$shopping_button/summoning/All_spawner.queue_free()
+
+
+
+
+func _on_damage_increase_pressed() -> void:
+	if Gamerule.money > 74:
+		Gamerule.c += 1
+		Gamerule.money -= 75
+
+func _on_damage_roll_pressed() -> void:
+	if Gamerule.money > 74:
+		Gamerule.b += 2
+		Gamerule.money -= 75
+		print(Gamerule.b)
+
+func _on_speed_label_pressed() -> void:
+	if Gamerule.money > 74:
+		Gamerule.SPEED += 1.5
+		Gamerule.money -= 75
+
+
+func _on_jump_label_pressed() -> void:
+	if Gamerule.money > 124:
+		Gamerule.JUMP_VELOCITY += 1.5
+		Gamerule.money -= 125
+
+
+func _on_reload_time_pressed() -> void:
+	if Gamerule.money > 249:
+		Gamerule.reload += 1
+		Gamerule.money -= 250
+
+
+func _on_more_arrows_pressed() -> void:
+	if Gamerule.money > 49:
+		Gamerule.stashed_arrows += 10
+		Gamerule.money -= 50
+
+
+func _on_armour_increase_pressed() -> void:
+	if Gamerule.money > 124:
+		Gamerule.Armour += 1
+		Gamerule.money -= 125
+
+
+func _on_health_increase_pressed() -> void:
+	if Gamerule.money > 99:
+		Gamerule.Health += 10
+		Gamerule.money -= 100
+
+
+func _on_flying_mode_pressed() -> void:
+	if Gamerule.money > 599:
+		Gamerule.can_fly = true
+		Gamerule.money -= 600
+
+func _on_flying_speed_pressed() -> void:
+	if Gamerule.money > 199:
+		Gamerule.flying_speed += 1
+		Gamerule.money -= 200
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_cu202"]
+font_size = 70
+font_color = Color(1, 0.223529, 0.913725, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ak03"]
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_kceto"]
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_issdj"]
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_740bb"]
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_tmxbt"]
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_khgbt"]
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_qhvpe"]
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_emii5"]
+font_size = 27
+
+[node name="Marketplace" type="Node2D"]
+script = SubResource("GDScript_r11w8")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(1020, 637)
+scale = Vector2(5, 5)
+texture = ExtResource("1_6yy72")
+
+[node name="Name" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 424.0
+offset_bottom = 98.0
+text = "Marketplace"
+label_settings = SubResource("LabelSettings_cu202")
+
+[node name="Return scene" type="Button" parent="."]
+offset_left = 1287.0
+offset_top = 24.0
+offset_right = 1531.0
+offset_bottom = 92.0
+text = "Return to main scene ->"
+script = ExtResource("2_84qdk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 59.0
+offset_top = 121.0
+offset_right = 268.0
+offset_bottom = 350.0
+
+[node name="Damage_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "ukvkgv"
+label_settings = SubResource("LabelSettings_3ak03")
+script = ExtResource("3_fwj3s")
+
+[node name="speed_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Speed"
+label_settings = SubResource("LabelSettings_kceto")
+script = ExtResource("4_y6ns5")
+
+[node name="jump_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "zfvgadf"
+label_settings = SubResource("LabelSettings_issdj")
+script = ExtResource("5_he3bp")
+
+[node name="Money_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "arser"
+label_settings = SubResource("LabelSettings_740bb")
+script = ExtResource("5_4fhpq")
+
+[node name="Max_damage_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "fghdthsrt"
+label_settings = SubResource("LabelSettings_tmxbt")
+script = ExtResource("7_rch2d")
+
+[node name="Armour_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "gdfbdfgb"
+label_settings = SubResource("LabelSettings_khgbt")
+script = ExtResource("8_4svqu")
+
+[node name="health_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "ghghdf"
+label_settings = SubResource("LabelSettings_qhvpe")
+script = ExtResource("9_tjpfe")
+
+[node name="fling_speed" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "bdhdg"
+label_settings = SubResource("LabelSettings_emii5")
+script = ExtResource("10_uypai")
+
+[node name="shopping_button" type="HBoxContainer" parent="."]
+offset_left = 490.0
+offset_top = 206.0
+offset_right = 1444.0
+offset_bottom = 741.0
+
+[node name="attack and defense" type="VBoxContainer" parent="shopping_button"]
+layout_mode = 2
+
+[node name="Damage increase" type="Button" parent="shopping_button/attack and defense"]
+layout_mode = 2
+text = "Damage modifier increase: +1
+Cost: $75"
+
+[node name="Reload_time" type="Button" parent="shopping_button/attack and defense"]
+layout_mode = 2
+text = "Reload: +1 arrow every 2 seconds
+cost: $250"
+
+[node name="damage_roll" type="Button" parent="shopping_button/attack and defense"]
+layout_mode = 2
+text = "damage roll increased: +2
+ to max roll
+cost: $75"
+
+[node name="more_arrows" type="Button" parent="shopping_button/attack and defense"]
+layout_mode = 2
+text = "More arrows: +10 arrows when you 
+next run out
+cost: $50"
+
+[node name="armour_increase" type="Button" parent="shopping_button/attack and defense"]
+layout_mode = 2
+text = "Armour increase: +1 armour
+cost: $125"
+
+[node name="passive attributes" type="VBoxContainer" parent="shopping_button"]
+layout_mode = 2
+
+[node name="Speed_increase" type="Button" parent="shopping_button/passive attributes"]
+layout_mode = 2
+text = "Speed increase: +1.5 pixels
+cost: $75"
+
+[node name="Jump_increase" type="Button" parent="shopping_button/passive attributes"]
+layout_mode = 2
+text = "Jump increase: +1.5 height
+cost: $100"
+
+[node name="health_increase" type="Button" parent="shopping_button/passive attributes"]
+layout_mode = 2
+text = "Health increase: +10 health
+cost: $100"
+
+[node name="Flying_mode" type="Button" parent="shopping_button/passive attributes"]
+layout_mode = 2
+text = "Flying mode: You can fly
+cost: $600"
+
+[node name="flying_speed" type="Button" parent="shopping_button/passive attributes"]
+layout_mode = 2
+text = "Flying speed: go faster when
+you fly (+1 to flying speed)
+cost: $200"
+
+[node name="summoning" type="VBoxContainer" parent="shopping_button"]
+layout_mode = 2
+
+[node name="Triangle_spawner" type="Button" parent="shopping_button/summoning"]
+layout_mode = 2
+text = "Create triangles: spawn
+ triangles instead of cubes
+cost: $150"
+script = ExtResource("3_ix4vo")
+
+[node name="Circle_spawner" type="Button" parent="shopping_button/summoning"]
+layout_mode = 2
+text = "Create circles: Spawn
+ circles inestead of triangles
+cost: $250"
+script = ExtResource("4_ese33")
+
+[node name="Duck_spawner" type="Button" parent="shopping_button/summoning"]
+layout_mode = 2
+text = "Create ducks: Spawn
+ducks instead of circles
+Cost: $450"
+script = ExtResource("5_a2s3m")
+
+[node name="All_spawner" type="Button" parent="shopping_button/summoning"]
+layout_mode = 2
+text = "Create all the shapes
+cost: $2000 + 5000 score"
+script = ExtResource("11_teppm")
+
+[connection signal="pressed" from="Return scene" to="Return scene" method="_on_pressed"]
+[connection signal="pressed" from="shopping_button/attack and defense/Damage increase" to="." method="_on_damage_increase_pressed"]
+[connection signal="pressed" from="shopping_button/attack and defense/Reload_time" to="." method="_on_reload_time_pressed"]
+[connection signal="pressed" from="shopping_button/attack and defense/damage_roll" to="." method="_on_damage_roll_pressed"]
+[connection signal="pressed" from="shopping_button/attack and defense/more_arrows" to="." method="_on_more_arrows_pressed"]
+[connection signal="pressed" from="shopping_button/attack and defense/armour_increase" to="." method="_on_armour_increase_pressed"]
+[connection signal="pressed" from="shopping_button/passive attributes/Speed_increase" to="." method="_on_speed_label_pressed"]
+[connection signal="pressed" from="shopping_button/passive attributes/Jump_increase" to="." method="_on_jump_label_pressed"]
+[connection signal="pressed" from="shopping_button/passive attributes/health_increase" to="." method="_on_health_increase_pressed"]
+[connection signal="pressed" from="shopping_button/passive attributes/Flying_mode" to="." method="_on_flying_mode_pressed"]
+[connection signal="pressed" from="shopping_button/passive attributes/flying_speed" to="." method="_on_flying_speed_pressed"]
+[connection signal="pressed" from="shopping_button/summoning/Triangle_spawner" to="shopping_button/summoning/Triangle_spawner" method="_on_pressed"]
+[connection signal="pressed" from="shopping_button/summoning/Circle_spawner" to="shopping_button/summoning/Circle_spawner" method="_on_pressed"]
+[connection signal="pressed" from="shopping_button/summoning/Duck_spawner" to="shopping_button/summoning/Duck_spawner" method="_on_pressed"]
+[connection signal="pressed" from="shopping_button/summoning/All_spawner" to="shopping_button/summoning/All_spawner" method="_on_pressed"]

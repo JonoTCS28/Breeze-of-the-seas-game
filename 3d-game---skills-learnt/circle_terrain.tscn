@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bch1vogeh11ly"]
+
+[ext_resource type="Texture2D" uid="uid://bhninwe316d06" path="res://Screenshot 2025-03-03 094545.png" id="1_424a4"]
+[ext_resource type="Script" path="res://circle_terrain.gd" id="1_dl2kh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2vc7"]
+albedo_texture = ExtResource("1_424a4")
+
+[sub_resource type="SphereMesh" id="SphereMesh_1n0gp"]
+material = SubResource("StandardMaterial3D_h2vc7")
+radius = 1.5
+height = 3.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cegmf"]
+radius = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hqm17"]
+radius = 1.68199
+
+[node name="circle_terrain" type="RigidBody3D" groups=["Terrain", "enemy"]]
+script = ExtResource("1_dl2kh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_1n0gp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_cegmf")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_hqm17")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
