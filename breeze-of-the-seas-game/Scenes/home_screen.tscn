@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://daxjx61fitiex"]
+
+[ext_resource type="Script" path="res://Scripts/Home_screen_buttons.gd" id="1_3f2jx"]
+[ext_resource type="Texture2D" uid="uid://bkm68x182wyn6" path="res://Models, Textures, Graphics/icon.svg" id="2_knpeu"]
+
+[node name="Home screen" type="Node2D"]
+script = ExtResource("1_3f2jx")
+
+[node name="Play button" type="Button" parent="."]
+offset_left = 435.0
+offset_top = 112.0
+offset_right = 637.0
+offset_bottom = 275.0
+text = "       Play"
+icon = ExtResource("2_knpeu")
+
+[connection signal="pressed" from="Play button" to="." method="_on_play_button_pressed"]

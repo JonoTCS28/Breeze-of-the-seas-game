@@ -1,0 +1,459 @@
+[gd_scene load_steps=6 format=4 uid="uid://hg33yafnnafo"]
+
+[ext_resource type="Texture2D" uid="uid://bdypwnod2q56f" path="res://Models, Textures, Graphics/Water_Light_Blue.jpg" id="1_fomxf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jc33h"]
+resource_name = "Water_Light_Blue"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_fomxf")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_f3676"]
+_surfaces = [{
+"aabb": AABB(0, 0, -1000, 1000, 1, 1000),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQABQACAAEAAQAGAAUABAADAAIAAgAFAAQABwAAAAMAAwAEAAcABgABAAAAAAAHAAYA"),
+"name": "Water_Light_Blue",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAB6RAAAAAAAAACAAAB6RAAAAAAAAHrEAAAAAAAAAAAAAHrEAAAAAAAAAAAAAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAHrEAAB6RAAAgD8AAHrEAAB6RAAAgD8AAACA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tiryh"]
+resource_name = "Mesh1"
+_surfaces = [{
+"aabb": AABB(0, 0, -1000, 1000, 1, 1000),
+"attribute_data": PackedByteArray("wAokxAAAgD/ACiTE4dGRxAAAAADh0ZHEAAAAAAAAgD8AAAAAAACAPwAAAADh0ZHEwAokROHRkcTACiREAACAPwAAAACAlCu+AAAAAAAAgD/ACiTEAACAP8AKJMSAlCu+AAAAAICUK74AAAAAAACAP8AKJMQAAIA/wAokxICUK77ACiREgJQrvsAKJEQAAIA/AAAAAAAAgD8AAAAAgJQrvsAKJESAlCu+wAokRAAAgD8AAAAAAACAPwAAAACAlCu+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jc33h"),
+"name": "Water_Light_Blue",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAB6RAAAAAAAAACAAAB6RAAAAAAAAHrEAAAAAAAAAAAAAHrEAAAAAAAAAAAAAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAHrEAAB6RAAAgD8AAHrEAAB6RAAAgD8AAACAAAAAAAAAgD8AAHrEAAAAAAAAAAAAAHrEAAB6RAAAAAAAAHrEAAB6RAAAgD8AAHrEAAAAAAAAgD8AAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAHrEAAAAAAAAgD8AAHrEAAB6RAAAgD8AAACAAAB6RAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAgD8AAACAAAB6RAAAgD8AAHrEAAB6RAAAAAAAAHrEAAB6RAAAAAAAAACAAAB6RAAAgD8AAACA/38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//f///////v/9///////+//3///////7//f///////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f/9/////v/9//3////+//3//f////7//f/9/////v////3//////////f/////////9//////////3//////")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_f3676")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nlb5l"]
+data = PackedVector3Array(1000, 0, 0, 1000, 0, -1000, 0, 0, -1000, 0, 0, -1000, 0, 0, 0, 1000, 0, 0, 0, 1, 0, 0, 1, -1000, 1000, 1, -1000, 1000, 1, -1000, 1000, 1, 0, 0, 1, 0, 0, 1, -1000, 0, 0, -1000, 1000, 0, -1000, 1000, 0, -1000, 1000, 1, -1000, 0, 1, -1000, 0, 1, 0, 0, 0, 0, 0, 0, -1000, 0, 0, -1000, 0, 1, -1000, 0, 1, 0, 1000, 1, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1000, 1, 0, 1000, 1, -1000, 1000, 0, -1000, 1000, 0, 0, 1000, 0, 0, 1000, 1, 0, 1000, 1, -1000)
+
+[node name="ocean" type="Node3D"]
+
+[node name="more ocean" type="Node3D" parent="."]
+
+[node name="Mesh4" type="MeshInstance3D" parent="more ocean"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.864, 0, 0)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean/Mesh4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean/Mesh4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh3" type="MeshInstance3D" parent="more ocean"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 998.54)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean/Mesh3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean/Mesh3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh2" type="MeshInstance3D" parent="more ocean"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -995.3, 0, 983.527)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean/Mesh2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean/Mesh2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh1" type="MeshInstance3D" parent="more ocean"]
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean/Mesh1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean/Mesh1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="more ocean2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1910.19, 0, -1964.24)
+
+[node name="Mesh4" type="MeshInstance3D" parent="more ocean2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.864, 0, 0)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean2/Mesh4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean2/Mesh4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh3" type="MeshInstance3D" parent="more ocean2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 998.54)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean2/Mesh3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean2/Mesh3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh2" type="MeshInstance3D" parent="more ocean2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -995.3, 0, 983.527)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean2/Mesh2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean2/Mesh2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh1" type="MeshInstance3D" parent="more ocean2"]
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean2/Mesh1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean2/Mesh1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="more ocean3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1950.73, 0, 0)
+
+[node name="Mesh4" type="MeshInstance3D" parent="more ocean3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.864, 0, 0)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean3/Mesh4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean3/Mesh4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh3" type="MeshInstance3D" parent="more ocean3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 998.54)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean3/Mesh3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean3/Mesh3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh2" type="MeshInstance3D" parent="more ocean3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -995.3, 0, 983.527)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean3/Mesh2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean3/Mesh2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh1" type="MeshInstance3D" parent="more ocean3"]
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean3/Mesh1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean3/Mesh1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="more ocean4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1960.4, 0, 1939.82)
+
+[node name="Mesh4" type="MeshInstance3D" parent="more ocean4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.864, 0, 0)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean4/Mesh4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean4/Mesh4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh3" type="MeshInstance3D" parent="more ocean4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 998.54)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean4/Mesh3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean4/Mesh3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh2" type="MeshInstance3D" parent="more ocean4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -995.3, 0, 983.527)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean4/Mesh2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean4/Mesh2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh1" type="MeshInstance3D" parent="more ocean4"]
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean4/Mesh1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean4/Mesh1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="more ocean5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1962.74)
+
+[node name="Mesh4" type="MeshInstance3D" parent="more ocean5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.864, 0, 0)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean5/Mesh4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean5/Mesh4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh3" type="MeshInstance3D" parent="more ocean5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 998.54)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean5/Mesh3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean5/Mesh3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh2" type="MeshInstance3D" parent="more ocean5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -995.3, 0, 983.527)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean5/Mesh2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean5/Mesh2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh1" type="MeshInstance3D" parent="more ocean5"]
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean5/Mesh1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean5/Mesh1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="more ocean6" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1949.12)
+
+[node name="Mesh4" type="MeshInstance3D" parent="more ocean6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.864, 0, 0)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean6/Mesh4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean6/Mesh4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh3" type="MeshInstance3D" parent="more ocean6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 998.54)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean6/Mesh3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean6/Mesh3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh2" type="MeshInstance3D" parent="more ocean6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -995.3, 0, 983.527)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean6/Mesh2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean6/Mesh2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh1" type="MeshInstance3D" parent="more ocean6"]
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean6/Mesh1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean6/Mesh1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="more ocean7" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1962.58, 0, 0)
+
+[node name="Mesh4" type="MeshInstance3D" parent="more ocean7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.864, 0, 0)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean7/Mesh4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean7/Mesh4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh3" type="MeshInstance3D" parent="more ocean7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 998.54)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean7/Mesh3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean7/Mesh3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh2" type="MeshInstance3D" parent="more ocean7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -995.3, 0, 983.527)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean7/Mesh2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean7/Mesh2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh1" type="MeshInstance3D" parent="more ocean7"]
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean7/Mesh1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean7/Mesh1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="more ocean8" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1967.81, 0, 1957.58)
+
+[node name="Mesh4" type="MeshInstance3D" parent="more ocean8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.864, 0, 0)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean8/Mesh4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean8/Mesh4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh3" type="MeshInstance3D" parent="more ocean8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 998.54)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean8/Mesh3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean8/Mesh3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh2" type="MeshInstance3D" parent="more ocean8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -995.3, 0, 983.527)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean8/Mesh2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean8/Mesh2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh1" type="MeshInstance3D" parent="more ocean8"]
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean8/Mesh1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean8/Mesh1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="more ocean9" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1984.11, 0, -1981.9)
+
+[node name="Mesh4" type="MeshInstance3D" parent="more ocean9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.864, 0, 0)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean9/Mesh4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean9/Mesh4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh3" type="MeshInstance3D" parent="more ocean9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 998.54)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean9/Mesh3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean9/Mesh3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh2" type="MeshInstance3D" parent="more ocean9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -995.3, 0, 983.527)
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean9/Mesh2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean9/Mesh2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")
+
+[node name="Mesh1" type="MeshInstance3D" parent="more ocean9"]
+mesh = SubResource("ArrayMesh_tiryh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="more ocean9/Mesh1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="more ocean9/Mesh1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nlb5l")

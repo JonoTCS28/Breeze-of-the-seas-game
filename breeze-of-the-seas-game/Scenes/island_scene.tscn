@@ -1,0 +1,299 @@
+[gd_scene load_steps=10 format=3 uid="uid://510qk57x0nea"]
+
+[ext_resource type="PackedScene" uid="uid://hg33yafnnafo" path="res://Scenes/ocean1.tscn" id="1_aghqv"]
+[ext_resource type="Script" path="res://Scripts/island_scene.gd" id="1_nb8bk"]
+[ext_resource type="Script" path="res://Scripts/player_script.gd" id="2_h4qor"]
+[ext_resource type="PackedScene" uid="uid://ckew5s0fhd0ho" path="res://Scenes/Sailing_ship_model.tscn" id="3_cc2oa"]
+[ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="4_iafhl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hlyyd"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_e630s"]
+sky_material = SubResource("ProceduralSkyMaterial_hlyyd")
+
+[sub_resource type="Environment" id="Environment_gk2rs"]
+background_mode = 2
+sky = SubResource("Sky_e630s")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ytkk1"]
+points = PackedVector3Array(11.8559, 5.03506, 4.58895, 13.3285, 0.373953, -15.7637, 14.2786, 0.389748, -15.7558, 13.2973, 20.0595, -11.5043, 21.9294, 17.0133, -10.4957, 5.67703, 17.0133, -11.5043, 14.3107, 8.89068, -27.254, 16.8497, 11.4279, 4.74171, 18.0708, 2.79404, 0.851904, 9.13335, 3.36553, -15.2017, 21.9294, 10.4118, -11.5043, 10.0124, 1.84838, 0.847415, 9.23423, 11.4279, 3.21765, 5.67703, 10.4118, -11.5043, 18.0078, 2.4306, -14.7335, 13.3312, 4.69324, -25.6879, 14.7679, 0.251013, 1.06483, 18.8813, 11.4279, 2.20267, 13.2973, 8.89068, -27.254, 13.2973, 20.0595, -10.4957, 11.7733, 11.4279, 5.25079, 14.7794, 3.55564, 4.62939, 21.9294, 17.0133, -11.5043, 11.902, 0.391971, -14.8011, 9.04663, 4.19615, 1.37062, 14.2702, 4.76493, -25.4858, 16.6241, 0.97155, -14.7579, 5.67703, 17.0133, -10.4957, 12.3504, 0.688571, 2.09528, 18.11, 3.68421, 1.91733, 14.3107, 20.0595, -10.4957, 14.3107, 20.0595, -11.5043)
+
+[node name="Island scene" type="Node3D"]
+script = ExtResource("1_nb8bk")
+
+[node name="Gen_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="world enviroment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gk2rs")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.333266, 0.372738, 0, 0.745476, 0.666532, -0.5, 0.577234, -0.645601, 0, 125.316, 0)
+shadow_enabled = true
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.999745, 0, -0.0225826, 0, 1, 0, 0.0225826, 0, 0.999745, 0, 13.5556, 0)
+script = ExtResource("2_h4qor")
+metadata/_edit_group_ = true
+
+[node name="Sailing_ship_model" parent="Player" instance=ExtResource("3_cc2oa")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("ConvexPolygonShape3D_ytkk1")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.885393, 0.464843, 0, -0.464843, 0.885393, 13.866, 13.0948, -2.24853)
+script = ExtResource("4_iafhl")
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="ocean1" parent="Terrain" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -500, 0, 500)
+
+[node name="ocean2" parent="Terrain/ocean1" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000.48, 0, 5.6955)
+
+[node name="ocean" parent="Terrain/ocean1" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 999.525, 0, -0.654541)
+
+[node name="ocean4" parent="Terrain/ocean1" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.401, 0, -994.305)
+
+[node name="ocean5" parent="Terrain/ocean1" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11517, 0, 981.574)
+
+[node name="ocean6" parent="Terrain/ocean1" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1003.05, 0, -998.09)
+
+[node name="ocean7" parent="Terrain/ocean1" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.077, 0, 949.856)
+
+[node name="ocean8" parent="Terrain/ocean1" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.534, 0, 992.896)
+
+[node name="ocean9" parent="Terrain/ocean1" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -978.802, 0, -991.051)
+
+[node name="ocean2" parent="Terrain" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -464.338, 0, -2421.26)
+
+[node name="ocean2" parent="Terrain/ocean2" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000.48, 0, 5.6955)
+
+[node name="ocean" parent="Terrain/ocean2" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 999.525, 0, -0.654541)
+
+[node name="ocean4" parent="Terrain/ocean2" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.401, 0, -994.305)
+
+[node name="ocean5" parent="Terrain/ocean2" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11517, 0, 981.574)
+
+[node name="ocean6" parent="Terrain/ocean2" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1003.05, 0, -998.09)
+
+[node name="ocean7" parent="Terrain/ocean2" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.077, 0, 949.856)
+
+[node name="ocean8" parent="Terrain/ocean2" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.534, 0, 992.896)
+
+[node name="ocean9" parent="Terrain/ocean2" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -978.802, 0, -991.051)
+
+[node name="ocean3" parent="Terrain" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2394.07, 0, 477.327)
+
+[node name="ocean2" parent="Terrain/ocean3" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000.48, 0, 5.6955)
+
+[node name="ocean" parent="Terrain/ocean3" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 999.525, 0, -0.654541)
+
+[node name="ocean4" parent="Terrain/ocean3" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.401, 0, -994.305)
+
+[node name="ocean5" parent="Terrain/ocean3" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11517, 0, 981.574)
+
+[node name="ocean6" parent="Terrain/ocean3" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1003.05, 0, -998.09)
+
+[node name="ocean7" parent="Terrain/ocean3" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.077, 0, 949.856)
+
+[node name="ocean8" parent="Terrain/ocean3" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.534, 0, 992.896)
+
+[node name="ocean9" parent="Terrain/ocean3" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -978.802, 0, -991.051)
+
+[node name="ocean4" parent="Terrain" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3392.85, 0, 500)
+
+[node name="ocean2" parent="Terrain/ocean4" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000.48, 0, 5.6955)
+
+[node name="ocean" parent="Terrain/ocean4" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 999.525, 0, -0.654541)
+
+[node name="ocean4" parent="Terrain/ocean4" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.401, 0, -994.305)
+
+[node name="ocean5" parent="Terrain/ocean4" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11517, 0, 981.574)
+
+[node name="ocean6" parent="Terrain/ocean4" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1003.05, 0, -998.09)
+
+[node name="ocean7" parent="Terrain/ocean4" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.077, 0, 949.856)
+
+[node name="ocean8" parent="Terrain/ocean4" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.534, 0, 992.896)
+
+[node name="ocean9" parent="Terrain/ocean4" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -978.802, 0, -991.051)
+
+[node name="ocean5" parent="Terrain" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -500, 0, 3232.72)
+
+[node name="ocean2" parent="Terrain/ocean5" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000.48, 0, 5.6955)
+
+[node name="ocean" parent="Terrain/ocean5" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 999.525, 0, -0.654541)
+
+[node name="ocean4" parent="Terrain/ocean5" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.401, 0, -994.305)
+
+[node name="ocean5" parent="Terrain/ocean5" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11517, 0, 981.574)
+
+[node name="ocean6" parent="Terrain/ocean5" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1003.05, 0, -998.09)
+
+[node name="ocean7" parent="Terrain/ocean5" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.077, 0, 949.856)
+
+[node name="ocean8" parent="Terrain/ocean5" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.534, 0, 992.896)
+
+[node name="ocean9" parent="Terrain/ocean5" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -978.802, 0, -991.051)
+
+[node name="ocean6" parent="Terrain" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2422.75, 0, 3356.06)
+
+[node name="ocean2" parent="Terrain/ocean6" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000.48, 0, 5.6955)
+
+[node name="ocean" parent="Terrain/ocean6" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 999.525, 0, -0.654541)
+
+[node name="ocean4" parent="Terrain/ocean6" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.401, 0, -994.305)
+
+[node name="ocean5" parent="Terrain/ocean6" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11517, 0, 981.574)
+
+[node name="ocean6" parent="Terrain/ocean6" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1003.05, 0, -998.09)
+
+[node name="ocean7" parent="Terrain/ocean6" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.077, 0, 949.856)
+
+[node name="ocean8" parent="Terrain/ocean6" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.534, 0, 992.896)
+
+[node name="ocean9" parent="Terrain/ocean6" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -978.802, 0, -991.051)
+
+[node name="ocean7" parent="Terrain" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3379.59, 0, -2445.11)
+
+[node name="ocean2" parent="Terrain/ocean7" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000.48, 0, 5.6955)
+
+[node name="ocean" parent="Terrain/ocean7" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 999.525, 0, -0.654541)
+
+[node name="ocean4" parent="Terrain/ocean7" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.401, 0, -994.305)
+
+[node name="ocean5" parent="Terrain/ocean7" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11517, 0, 981.574)
+
+[node name="ocean6" parent="Terrain/ocean7" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1003.05, 0, -998.09)
+
+[node name="ocean7" parent="Terrain/ocean7" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.077, 0, 949.856)
+
+[node name="ocean8" parent="Terrain/ocean7" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.534, 0, 992.896)
+
+[node name="ocean9" parent="Terrain/ocean7" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -978.802, 0, -991.051)
+
+[node name="ocean8" parent="Terrain" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3424.05, 0, 3135.35)
+
+[node name="ocean2" parent="Terrain/ocean8" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000.48, 0, 5.6955)
+
+[node name="ocean" parent="Terrain/ocean8" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 999.525, 0, -0.654541)
+
+[node name="ocean4" parent="Terrain/ocean8" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.401, 0, -994.305)
+
+[node name="ocean5" parent="Terrain/ocean8" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11517, 0, 981.574)
+
+[node name="ocean6" parent="Terrain/ocean8" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1003.05, 0, -998.09)
+
+[node name="ocean7" parent="Terrain/ocean8" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.077, 0, 949.856)
+
+[node name="ocean8" parent="Terrain/ocean8" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.534, 0, 992.896)
+
+[node name="ocean9" parent="Terrain/ocean8" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -978.802, 0, -991.051)
+
+[node name="ocean9" parent="Terrain" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2427.83, 0, -2470.91)
+
+[node name="ocean2" parent="Terrain/ocean9" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000.48, 0, 5.6955)
+
+[node name="ocean" parent="Terrain/ocean9" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 999.525, 0, -0.654541)
+
+[node name="ocean4" parent="Terrain/ocean9" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.401, 0, -994.305)
+
+[node name="ocean5" parent="Terrain/ocean9" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11517, 0, 981.574)
+
+[node name="ocean6" parent="Terrain/ocean9" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1003.05, 0, -998.09)
+
+[node name="ocean7" parent="Terrain/ocean9" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.077, 0, 949.856)
+
+[node name="ocean8" parent="Terrain/ocean9" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -997.534, 0, 992.896)
+
+[node name="ocean9" parent="Terrain/ocean9" instance=ExtResource("1_aghqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -978.802, 0, -991.051)
+
+[connection signal="timeout" from="Gen_timer" to="." method="_on_gen_timer_timeout"]
